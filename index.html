@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gireesh — Aesthetic Software Developer</title>
+  <meta name="description" content="Portfolio of Gireesh — aesthetic software developer building clean code and digital solutions.">
+  <meta name="theme-color" content="#050302">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23120806'/%3E%3Ccircle cx='8' cy='8' r='3.4' fill='%23ff5a1f'/%3E%3C/svg%3E">
+
+  <!-- Flag JS availability before first paint (no-JS users get the composed, static hero). -->
+  <script>document.documentElement.classList.replace('no-js', 'js')</script>
+
+  <link rel="preload" as="image" href="assets/hero-cinematic.png" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,500..700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=26">
+</head>
+<body>
+
+  <!--
+    Layer architecture (see styles.css z-index tokens):
+    01 black base (body) · 02 red atmosphere · 03 ambient light/vignette
+    04 portrait (+ 05 eye highlight inside) · 06 header · 07 typography
+    08 notification · 09 interactive cursor light
+  -->
+  <main>
+  <section class="hero" id="top">
+
+    <!-- L02/03 · Atmosphere (parallax wrapper > animated layers) -->
+    <div class="atmo-parallax" aria-hidden="true">
+      <div class="layer-atmosphere fx fx-atmo">
+        <div class="atmo-wash"></div>
+        <div class="atmo-core"></div>
+        <div class="atmo-floor"></div>
+        <div class="atmo-vignette"></div>
+      </div>
+    </div>
+
+    <!-- L04/05 · Portrait -->
+    <div class="portrait-parallax">
+      <div class="portrait-frame">
+        <div class="portrait-stage fx fx-portrait">
+          <img class="portrait-img" src="assets/hero-cinematic.png" width="1672" height="941"
+               alt="Portrait of Gireesh, software developer, lit by warm red cinematic light" decoding="async">
+          <div class="portrait-veil fx-veil" aria-hidden="true"></div>
+          <div class="portrait-sweep fx-sweep" aria-hidden="true"></div>
+          <div class="portrait-gold" aria-hidden="true"></div>
+          <div class="eye-flash eye-flash--right fx-flash" aria-hidden="true"></div>
+          <div class="eye-flash fx-flash" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Film grain (static, near-invisible) -->
+    <div class="layer-grain" aria-hidden="true"></div>
+
+    <!-- Legibility scrim behind the notification zone -->
+    <div class="scrim-bottom" aria-hidden="true"></div>
+
+    <!-- L07 · Hero typography -->
+    <div class="hero-copy">
+      <h1 class="headline fx fx-headline" data-slot="headline">Hasnain</h1>
+      <div class="role-block">
+        <p class="role">
+          <span class="role-line fx fx-role-1" data-slot="role-1">Aesthetic</span>
+          <span class="role-line fx fx-role-2" data-slot="role-2">Software Developer</span>
+        </p>
+        <ul class="hero-meta fx fx-meta" data-slot="meta">
+          <li>Web</li>
+          <li>App</li>
+          <li>Code</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- L08 · Notification -->
+    <aside class="notification fx fx-notif" aria-label="Notification">
+      <button class="notif-close" type="button" aria-label="Dismiss notification">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/>
+        </svg>
+      </button>
+      <div class="notif-card">
+        <span class="notif-avatar" aria-hidden="true">
+          <span class="notif-badge">
+            <svg viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3.4 1 1 4l2.4 3M8.6 1 11 4 8.6 7"/>
+            </svg>
+          </span>
+        </span>
+        <div class="notif-body">
+          <div class="notif-top">
+            <span class="notif-name" data-slot="notif-name">Gireesh</span>
+            <span class="notif-time" data-slot="notif-time">now</span>
+          </div>
+          <p class="notif-msg">
+            <strong data-slot="notif-lead">Aesthetic</strong>
+            <span data-slot="notif-message">software developer — building clean code and digital solutions.</span>
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- L06 · Header (single header; pill is the animated element) -->
+    <header class="site-header">
+      <div class="header-pill fx fx-header">
+        <a class="brand" href="#top" aria-label="Hasnain Yaqoob — home">
+          <img class="brand-mark" src="assets/hy-monogram.svg" alt="Hasnain Yaqoob HY monogram" width="64" height="48" decoding="async">
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a class="nav-link is-active" href="#work" aria-current="page" data-slot="nav-0"><span class="nav-dot" aria-hidden="true"></span>Work</a></li>
+            <li><a class="nav-link" href="#about" data-slot="nav-1">About</a></li>
+            <li><a class="nav-link" href="#projects" data-slot="nav-2">Projects</a></li>
+            <li><a class="nav-link" href="#method" data-slot="nav-3">Skills</a></li>
+            <li><a class="nav-link" href="#contact" data-slot="nav-4">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="cta" href="#contact">
+            <span data-slot="cta">Let&rsquo;s Talk</span>
+            <svg class="cta-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3.2 10.8 10.8 3.2M5 3.2h5.8V9"/>
+            </svg>
+          </a>
+          <button class="theme-btn" type="button" aria-label="Switch theme">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <circle cx="10" cy="10" r="3.3"/>
+              <path d="M10 1.6v2.1M10 16.3v2.1M1.6 10h2.1M16.3 10h2.1M4.1 4.1l1.5 1.5M14.4 14.4l1.5 1.5M15.9 4.1l-1.5 1.5M5.6 14.4l-1.5 1.5"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- L09 · Interactive cursor light -->
+    <div class="cursor-light" aria-hidden="true"></div>
+
+  </section>
+
+  <!-- ==========================================================
+       SECTION 02 · Where code meets creative thinking
+       Scroll-scrubbed, pinned editorial composition.
+       Final resting state replicates "Section 2 Image.jpg";
+       coordinates use --u (1% of the reference width).
+       ========================================================== -->
+  <section class="s2-pin" id="work" aria-label="Where code meets creative thinking">
+    <div class="s2-stage">
+
+      <div class="s2-comp">
+        <p class="s2-brand s2-meta">
+          <span class="s2-brand-my">My</span><span class="s2-brand-creative">Creative</span><span class="s2-brand-hunch">Hunch</span>
+        </p>
+
+        <div class="s2-side s2-side--left s2-meta">
+          <p><span>Design by</span> <strong data-slot="s2-side-l1">Hasnain Yaqoob</strong></p>
+          <p><span>Code into</span> <strong><em data-slot="s2-side-l2">Solutions.</em></strong></p>
+        </div>
+
+        <div class="s2-side s2-side--right s2-meta">
+          <p><span>Built with</span> <strong data-slot="s2-side-r1">Passion.</strong></p>
+          <p><span>Driven by</span> <strong data-slot="s2-side-r2">Creativity.</strong></p>
+        </div>
+
+        <h2 class="s2-title">
+          <span class="s2-mask s2-mask-1"><span class="s2-line s2-line-1"><span class="s2-where">Where</span></span></span>
+          <span class="s2-mask s2-mask-2"><span class="s2-line s2-line-2"><span class="s2-code">Code</span><span class="s2-meets">Meets</span></span></span>
+          <span class="s2-mask s2-mask-3"><span class="s2-line s2-line-3"><span class="s2-creative">Creative</span><span class="s2-thinking">Thinking</span></span></span>
+        </h2>
+
+        <ul class="s2-labels" aria-label="Focus areas">
+          <li class="s2-label-pos s2-pos-ai"><span class="s2-label s2-label--ai">AI.</span></li>
+          <li class="s2-label-pos s2-pos-sys"><span class="s2-label s2-label--sys">SYSTEMS.</span></li>
+          <li class="s2-label-pos s2-pos-web"><span class="s2-label s2-label--web">WEB.</span></li>
+          <li class="s2-label-pos s2-pos-api"><span class="s2-label s2-label--api">APIs.</span></li>
+          <li class="s2-label-pos s2-pos-auto"><span class="s2-label s2-label--auto">AUTOMATION.</span></li>
+        </ul>
+      </div>
+
+      <div class="s2-rail s2-rail--left s2-meta" aria-hidden="true">
+        <span class="s2-rail-dot"></span>
+        <ul class="s2-rail-list">
+          <li>Idea</li><li>Design</li><li>Develop</li><li>Deploy</li><li>Impact</li>
+        </ul>
+        <span class="s2-rail-line s2-rail-line--a"></span>
+        <span class="s2-rail-line s2-rail-line--b"></span>
+      </div>
+
+      <div class="s2-rail s2-rail--right s2-meta" aria-hidden="true">
+        <span class="s2-rail-dot"></span>
+        <ul class="s2-rail-list">
+          <li>Idea</li><li>Design</li><li>Develop</li><li>Deploy</li><li>Impact</li>
+        </ul>
+        <span class="s2-rail-line s2-rail-line--a"></span>
+        <span class="s2-rail-line s2-rail-line--b"></span>
+      </div>
+
+      <!-- ------------------------------------------------------
+           SECTION 02 → 03 · puzzle transition layers
+           Hidden until the scrub enters the transition phase;
+           script.js drives every state from scroll progress.
+           Tile fragments are cloned from .s2-comp at runtime.
+           ------------------------------------------------------ -->
+      <div class="s3-atmo" aria-hidden="true">
+        <p class="s3-credit s3-credit--l">MyCreativeHunch Studio</p>
+        <p class="s3-credit s3-credit--r">&copy; 2026 MyCreativeHunch</p>
+      </div>
+
+      <!-- ------------------------------------------------------
+           SECTION 03 · replicates "section 3 refrence.jpg".
+           Emerges behind the departing puzzle pieces; locked and
+           interactive once the scrub completes.
+           ------------------------------------------------------ -->
+      <div class="p3" id="section-03">
+        <div class="p3-dim" aria-hidden="true">
+          <span>Functional &amp; Beautiful</span>
+          <span>Designs for Startups</span>
+          <span class="p3-dim-3">Ready to Scale</span>
+        </div>
+
+        <p class="p3-corner p3-corner--l">Transforming <b>Visions</b> to Reality</p>
+
+        <!-- About Me composition: oversized title, three doors, footer meta -->
+        <div class="ab-comp">
+          <span class="ab-title-mask">
+            <h2 class="ab-title"><span class="ab-title-main">About</span><span class="ab-title-script">Me</span></h2>
+          </span>
+
+          <div class="ab-boxes">
+            <div class="ab-box-pos">
+              <button class="ab-box ab-box--who" type="button" data-ab="who" aria-expanded="false">
+                <span class="ab-box-in">
+                  <img class="ab-identity-card" src="assets/identity-portfolio-card.png" alt="01 — Identity. Who I Am. Gireesh — aesthetic software developer." loading="lazy" decoding="async">
+                </span>
+              </button>
+            </div>
+
+            <div class="ab-box-pos">
+              <button class="ab-box ab-box--what" type="button" data-ab="what" aria-expanded="false">
+                <span class="ab-box-in">
+                  <img class="ab-craft-card" src="assets/craft-portfolio-card.png" alt="02 — Craft. What I Do. Web, App, Code. View my works." loading="lazy" decoding="async">
+                </span>
+              </button>
+            </div>
+
+            <div class="ab-box-pos">
+              <button class="ab-box ab-box--think" type="button" data-ab="think" aria-expanded="false">
+                <span class="ab-box-in">
+                  <img class="ab-approach-card" src="assets/approach-portfolio-card.png" alt="03 — Approach. How I Think. Idea, Design, Develop, Deploy, Impact." loading="lazy" decoding="async">
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="ab-foot">
+            <span>( 03 &middot; About )</span>
+            <span>Web &middot; App &middot; Code</span>
+          </div>
+        </div>
+
+        <!-- expanded state: the clicked box opens into this layer -->
+        <div class="ab-detail" role="region" aria-label="About details">
+          <button class="ab-close" type="button" aria-label="Close">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
+          </button>
+
+          <div class="ab-view ab-view--preview" data-ab="who">
+            <img class="ab-preview-image" src="assets/about-preview.png" alt="01 — Who I Am. Hasnain Yaqoob. Aesthetic software developer — building clean code and digital solutions. Web, App, Code." loading="lazy" decoding="async">
+          </div>
+
+          <!-- "What I Do" has no About card: it navigates to Section 4 — My Works -->
+
+          <div class="ab-view ab-view--preview" data-ab="think">
+            <img class="ab-preview-image" src="assets/approach-preview.png" alt="03 — How I Think. Hasnain Yaqoob. The grid system is an aid, not a guarantee. — Josef Müller-Brockmann. Idea, Design, Develop, Deploy, Impact." loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+
+      <div class="s3-window" aria-hidden="true">
+        <div class="s3-ghost"></div>
+        <div class="s3-frags"></div>
+        <div class="s3-cluster"></div>
+        <div class="s3-window-frame"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================
+       BIG ROBOT · the original large Nexbot experience, restored.
+       Large robot, black environment, the scene's own lighting and
+       movement left as supplied. Scroll is the camera for the glass
+       idea panels that travel past it. Copy: content.js -> bigRobot.
+       ========================================================== -->
+  <section class="rb" id="think" aria-label="How I think about technology">
+    <div class="rb-pin">
+      <div class="rb-stage-wrap">
+        <div class="rb-env" aria-hidden="true">
+          <span class="rb-glow"></span>
+          <span class="rb-grid"></span>
+          <span class="rb-vignette"></span>
+        </div>
+
+        <p class="rb-tag rb-tag--l" data-slot="rb-label-l">Computer Science Student</p>
+        <p class="rb-tag rb-tag--r" data-slot="rb-label-r">Software &middot; Creative Technology</p>
+
+        <div class="rb-space">
+          <div class="rb-stage">
+            <canvas class="rb-canvas" aria-hidden="true"></canvas>
+          </div>
+          <div class="rb-panels"><!-- panels injected from content.js --></div>
+        </div>
+
+        <div class="rb-center">
+          <p class="rb-eyebrow" data-slot="rb-eyebrow">( 05 &middot; The Mind )</p>
+          <h2 class="rb-title">
+            <span data-slot="rb-title-1">I build software that</span>
+            <span data-slot="rb-title-2">looks as good as it works.</span>
+          </h2>
+          <p class="rb-sub" data-slot="rb-sub"></p>
+          <p class="rb-hint">
+            <span data-slot="rb-hint">Scroll to move through the ideas.</span>
+            <span class="rb-hint-arrow" aria-hidden="true">&darr;</span>
+          </p>
+        </div>
+
+        <span class="rb-depth" aria-hidden="true"></span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ==========================================================
+       EDITORIAL / SKILLS · scroll-choreographed
+       The statement travels in from the LEFT, the skills from the
+       RIGHT one item at a time, all scrubbed to scroll. Copy lives
+       in content.js -> editorial; the timeline in script.js mod 10.
+       ========================================================== -->
+  <section class="ed" id="method" aria-label="Code is my medium">
+    <div class="ed-pin">
+      <div class="ed-stage">
+        <div class="ed-env" aria-hidden="true"><span class="ed-glow"></span></div>
+
+        <div class="ed-grid">
+          <div class="ed-left">
+            <p class="ed-eyebrow" data-slot="ed-eyebrow">( 06 &middot; The Method )</p>
+            <h2 class="ed-statement">
+              <span class="ed-mask"><span class="ed-line" data-slot="ed-line-1">Code is my medium.</span></span>
+              <span class="ed-mask"><span class="ed-line" data-slot="ed-line-2">Curiosity is my engine.</span></span>
+            </h2>
+            <p class="ed-note" data-slot="ed-note"></p>
+          </div>
+
+          <div class="ed-right">
+            <p class="ed-skills-title" data-slot="ed-skills-title">I Work With</p>
+            <div class="ed-reel"><div class="ed-reel-in" data-slot="ed-reel"><!-- built from content.js --></div></div>
+          </div>
+        </div>
+
+        <span class="ed-progress" aria-hidden="true"></span>
+      </div>
+    </div>
+
+    <!-- the calm ending, once the choreography has finished -->
+    <div class="ed-tail">
+      <div class="ed-tail-in">
+        <div class="ed-mindset">
+          <p class="ed-mindset-title" data-slot="ed-mindset-title">Learn &rarr; Build &rarr; Break &rarr; Improve</p>
+          <ul class="ed-mindset-lines" data-slot="ed-mindset-lines"></ul>
+        </div>
+
+        <div class="ed-exploring">
+          <p class="ed-block-title" data-slot="ed-exploring-title">Currently Exploring</p>
+          <ul class="ed-explore-list" data-slot="ed-exploring-items"></ul>
+        </div>
+
+        <div class="ed-end">
+          <h3 class="ed-end-title" data-slot="ed-end-lines"></h3>
+          <p class="ed-end-note" data-slot="ed-end-note"></p>
+        <div class="curiosity-film" role="img" aria-label="Animated neural particles transform into a digital structure and an expanding orbit: learning, building, exploring.">
+          <canvas class="curiosity-canvas" aria-hidden="true"></canvas>
+          <div class="curiosity-top"><span>HY / CURIOSITY LAB</span><span>CONTINUOUS EVOLUTION</span></div>
+          <div class="curiosity-caption"><span class="curiosity-index">01 / 03</span><strong class="curiosity-phase">LEARN.</strong><span class="curiosity-detail">Connect ideas. Find new possibilities.</span></div>
+          <div class="curiosity-timeline" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       SMALL ROBOT · its own minimal chapter. The little robot
+       looks front → left → front → right → front, automatically:
+       no mouse, no scroll. Copy: content.js -> smallRobot.
+       ========================================================== -->
+  <section class="sr" id="curious" aria-label="Still curious">
+    <div class="sr-env" aria-hidden="true">
+      <span class="sr-glow"></span>
+      <span class="sr-vignette"></span>
+    </div>
+
+    <div class="sr-inner">
+      <div class="sr-copy">
+        <p class="sr-eyebrow" data-slot="sr-eyebrow">( 06 &middot; Still Curious )</p>
+        <h2 class="sr-title">
+          <span data-slot="sr-title-1">Always looking</span>
+          <span data-slot="sr-title-2">for the next thing.</span>
+        </h2>
+        <p class="sr-sub" data-slot="sr-sub"></p>
+        <p class="sr-note"><span data-slot="sr-note"></span></p>
+      </div>
+
+      <div class="sr-stage"><canvas class="sr-canvas" aria-hidden="true"></canvas></div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ==========================================================
+       SECTION 04 · MY SELECTED WORKS — hidden immersive chapter.
+       NOT part of the scroll flow: the page ends at About Me, and
+       only the "What I Do" door (or nav "Projects") opens this
+       fixed overlay via the black flash. Its internal scroller
+       drives a 3D dolly through full-screen project stages built
+       from content.js → works.projects.
+       ========================================================== -->
+  <div class="wk" id="works" aria-hidden="true">
+    <div class="wk-void" aria-hidden="true">
+      <div class="wk-dim">
+        <span>Functional &amp; Beautiful</span>
+        <span>Designs for Startups</span>
+        <span class="wk-dim-3">Ready to Scale</span>
+      </div>
+      <p class="wk-corner wk-corner--l">Transforming <b>Visions</b> to Reality</p>
+    </div>
+
+    <div class="wk-scroll">
+      <div class="wk-track">
+        <div class="wk-stage">
+
+          <div class="wk-head" data-enter style="--d:.08s">
+            <span class="wk-brand">
+              <svg class="wk-brand-mark" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 4.5 4.5 12l7.5 7.5"/><path d="M32 4.5 39.5 12 32 19.5"/><path d="M25.5 3.5 18.5 20.5"/>
+              </svg>
+              <b>MyCreativeHunch</b>&nbsp;Studio
+            </span>
+            <button class="wk-back" type="button" aria-label="Back to About">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
+            </button>
+          </div>
+
+          <!-- the 3D world: screens are injected here from content.js -->
+          <div class="wk-space"></div>
+
+          <p class="wk-counter" data-enter style="--d:.2s"><b data-wk-idx>01</b> / <span data-wk-total>05</span></p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- project detail shell (case studies plug in here later) -->
+    <div class="wk-detail" role="region" aria-label="Project detail">
+      <button class="wk-detail-close" type="button" aria-label="Back to works">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg>
+      </button>
+      <figure class="wk-detail-media"><img alt="" decoding="async"></figure>
+      <p class="wk-detail-title"></p>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       FOOTER · the last chapter. The statement is revealed by
+       movement as the page ends, matching the site's language.
+       Copy lives in content.js -> footer.
+       ========================================================== -->
+  <footer class="ft" id="contact">
+    <div class="ft-env" aria-hidden="true"><span class="ft-glow"></span></div>
+
+    <div class="ft-in">
+      <span class="ft-year" aria-hidden="true">20<br>26</span>
+      <div class="ft-wordmark" aria-label="Hasnain Yaqoob"><span>HASNAIN</span><b>YAQOOB</b></div>
+      <p class="ft-eyebrow" data-slot="ft-eyebrow">( 07 &middot; Contact )</p>
+
+      <h2 class="ft-headline">
+        <span class="ft-mask"><span class="ft-line" data-slot="ft-head-1">Let&rsquo;s build</span></span>
+        <span class="ft-mask"><span class="ft-line" data-slot="ft-head-2">something good.</span></span>
+      </h2>
+
+      <p class="ft-line-note" data-slot="ft-line">Open to freelance work and interesting problems. Let’s create digital solutions together.</p>
+
+      <a class="ft-mail" data-slot-href="ft-mail" href="mailto:hasnainyaqoob@gmail.com">
+        <span class="ft-mail-label" data-slot="ft-mail-label">Say hello</span>
+        <span class="ft-mail-icon" aria-hidden="true">✉</span>
+        <span class="ft-mail-address" data-slot="ft-mail-address">hasnainyaqoob@gmail.com</span>
+        <svg class="ft-mail-arrow" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M1 6h15M11 1l5 5-5 5"/>
+        </svg>
+      </a>
+
+      <nav class="ft-cols" data-slot="ft-cols" aria-label="Footer"></nav>
+
+      <div class="ft-base">
+        <span class="ft-brand">
+          <svg class="ft-mark" viewBox="0 0 44 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4.5 4.5 12l7.5 7.5"/><path d="M32 4.5 39.5 12 32 19.5"/><path d="M25.5 3.5 18.5 20.5"/>
+          </svg>
+          <b data-slot="ft-legal">&copy; 2026 Hasnain Yaqoob</b>
+          <i data-slot="ft-note"></i>
+        </span>
+
+        <button class="ft-top" type="button">
+          <span data-slot="ft-top">Back to top</span>
+          <svg viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 13V2M1.5 6.5 6 2l4.5 4.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- cinematic black flash between chapters -->
+  <div class="flash" aria-hidden="true"></div>
+
+  <script src="content.js?v=16"></script>
+  <script src="script.js?v=15"></script>
+  <script src="curiosity.js?v=2"></script>
+</body>
+</html>
